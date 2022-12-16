@@ -1,0 +1,222 @@
+#eagle{
+  float: left;
+  width: 120px;
+  height: 110px;
+  margin-top: 5px;
+  margin-right: 20px;
+  margin-left: 15px;
+}
+
+.dashboard{
+  margin-top: 40px;
+  margin-left: 10px;
+  font-size:xx-large;
+  color: darkgoldenrod;
+
+}
+
+.upper-container{
+  font-style: italic;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 4px;
+  /* background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d); */
+  
+}
+
+
+button{
+  margin-right: 20px;
+   width: 200px;
+   gap: 5px;
+ }
+
+.middle-container{
+  background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  text-align: left;
+  font-size: small;
+  font-style: italic;
+  float: left;
+  width: 100%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.middle-container-text1{
+  float: left;
+  margin-top: 30px;
+  padding-left: 5px;
+  margin-left: -675px;
+ 
+}
+.middle-right{
+  font-style: italic;
+  float: right;
+  margin-right: 10px;
+}
+.mrt1{
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#arrow1{
+  width: 50px;
+  height: 35px;
+}
+
+.third-container{
+  background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  height: fit-content;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-top: 2px;
+  width: 100%;
+  display:inline-flex ;
+ 
+}
+
+hr{
+
+  color: rgb(230, 105, 22);
+  position: relative;
+  top: 20px;
+  border:darkblue;
+  height: 12px;
+  margin-bottom: 50px;
+  
+  /* width: 10px;
+  height: 10px; */
+}
+
+
+
+
+/* Testing SOme new things */
+.box1 {
+  display: flex;
+  float: left;
+  margin-top: 20px;
+  margin-left: 20px;
+  column-gap: 1em;
+}
+
+.box1 > * {
+  flex: 1;
+}
+
+.box1a{
+  width: max-content;
+  height: 150px;
+  text-align: left;
+  float: left;
+}
+
+#viruses{
+  width: 350px;
+  height: 105px;
+  margin-top: -15px; 
+  margin-left: 5px;
+  margin-bottom: 10px; 
+}
+
+
+/* .dot {
+  background: rgb(26, 176, 196);
+  border-radius: 50%;
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.dot1{
+  padding-right: 1px;
+  padding-left: 5px;
+  padding-bottom: -20px;
+  margin-left: 15px;
+}
+
+
+.dot2{
+  padding-right: 1px;
+  padding-left: 10px;
+  padding-bottom: -20px;
+  margin-left: 15px;
+}
+
+
+.dot3{
+  padding-right: 1px;
+  padding-left: 15px;
+  padding-bottom: -20px;
+  margin-left: 15px;
+  width: max-content;
+}
+
+ */
+.third-right{
+  position: absolute;
+  right: 0;
+  width: 380px;
+  height: 190px;
+}
+
+
+.lastcircle {
+  margin: 25px 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 12px solid transparent;
+  background-size: 100% 100%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(white, white), 
+                    linear-gradient(30deg, red 36%, lightgrey 30%),
+                    linear-gradient(120deg, yellow 36%, lightgrey 30%),
+                    linear-gradient(300deg, blue 36%, lightgrey 30%),
+                    linear-gradient(210deg, green 36%, lightgrey 30%);
+  background-position: center center, left top, right top, left bottom, right bottom;
+  background-origin: content-box, border-box, border-box, border-box, border-box;
+  background-clip: content-box, border-box, border-box, border-box, border-box;
+  /* transform: rotate(30deg); */
+  display: inline-block;
+  /* align-items: center; */
+  /* justify-content: center;
+  overflow: hidden; add this property to clip the content inside the circle */
+
+}
+
+  .info {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(95, 26, 26);
+    align-content: center;
+  }
+
+
+  /***************************** Responsiveness ********************************/
+  @media (min-width: 768px) {
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    nav ul {
+      margin-right: 20px;
+    }
+  }
+  
+  /* Styles for viewports with a width less than 768 pixels */
+  @media (max-width: 767px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    nav ul {
+      flex-direction: column;
+    }
+  
+    nav li {
+      margin: 10px 0;
+    }
+  }
