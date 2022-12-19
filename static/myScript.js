@@ -1,3 +1,8 @@
+var source = new EventSource('/Log_Activity');
+source.onmessage = function(event) {
+  console.log(event.data);
+  // Update the page with the new data
+};
 
 
 function redirect() {
