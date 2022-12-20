@@ -48,7 +48,7 @@ db.session.close()
 
 @app.route('/')
 def hello_world():
-    return render_template("index1.html")
+    return render_template("index.html")
 
 
 @app.route('/Reports')

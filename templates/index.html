@@ -1,23 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <script src="myScript.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <title>Eagle Eye</title>
+  </head>
+  <body>
+    <div class="background-color">
+      <header>
+        <div class="header-left">
+          <a href="/">
+            <img src="/static/images/Icon.jpeg" alt="Logo" class="main-image" />
+          </a>
+          <a href="/" class="header-text"><h2>Dashboard</h2></a>
+        </div>
+        <div class="header-right">
+          <button class="button-85" role="button">Reports</button>
+          <button class="button-85" role="button">Alerts and Alarms</button>
+          <button class="button-85" role="button">Log Activity</button>
+        </div>
+      </header>
+    </div>
 
-  <title>Document</title>
-</head>
-<body>
-  <div class="lastcircle" onclick="redirect()">
-  <div class="info">
-    <!-- Insert dynamic information from your C application here -->
-    Reports
+    <hr>
+    <!-- ******************* Middle COntainer Starting *****************************  -->
 
-  </div>
-</div>
+    <div class="container-middle">
+      <div class="left-side">
+        <table width="500" height="150">
+          <tr>
+            <th>All Events</th>
+            <th>Avait Investigation</th>
+            <th>Confirmed</th>
+          </tr>
+          <tr>
+            <td>10.75k</td>
+            <td>2k</td>
+            <td>1k</td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </table>
+      </div>
 
-  
-</body>
+      <div class="right-side">
+        <h1>Hunt Score Summary</h1>
+        <div class="graph">
+          <!-- Insert your graph here -->
+        </div>
+        <div class="description" >
+          8-9<br />
+          5-8<br />
+          1-5
+        </div>
+      </div>
+    </div>
+
+    <!-- ******************* Middle COntainer Ending *****************************  -->
+  </body>
 </html>
