@@ -5,6 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/styles.css" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script src="/static/myScript.js"></script>
+
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.6/dist/umd/popper.min.js"
+      integrity="sha384-6s3Cq3DU6WnYJY4U4z4U6Uh8h6WjyLQn+ruSVcxJod8B6YlZvU4g4UJG6m8o6Kj"
+      crossorigin="anonymous"
+    ></script> -->
+    <!-- <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script> -->
+
     <title>Eagle Eye</title>
   </head>
   <body>
@@ -17,14 +33,30 @@
           <a href="/" class="header-text"><h2>Dashboard</h2></a>
         </div>
         <div class="header-right">
-          <button class="button-85" role="button">Reports</button>
-          <button class="button-85" role="button">Alerts and Alarms</button>
-          <button class="button-85" role="button">Log Activity</button>
+          <button class="button-85" role="button" id="start-button">
+            Start
+          </button>
+          <button class="button-85" role="button" onclick="stopPacket()">
+            Stop
+          </button>
+          <button class="button-85" role="button" id="report-button">
+            Reports
+          </button>
+          <button class="button-85" role="button" onclick="aaRedirect()">
+            Alerts and Alarms
+          </button>
+          <button
+            class="button-85"
+            role="button"
+            onclick="logActivityRedirect()"
+          >
+            Log Activity
+          </button>
         </div>
       </header>
     </div>
 
-    <hr>
+    <hr />
     <!-- ******************* Middle COntainer Starting *****************************  -->
 
     <div class="container-middle">
@@ -49,13 +81,17 @@
         <div class="graph">
           <!-- Insert your graph here -->
         </div>
-        <div class="description" >
+        <div class="description">
           8-9<br />
           5-8<br />
           1-5
         </div>
       </div>
     </div>
+
+    <!-- ***************** Model Window Code ****************** -->
+
+    <!--  ******************* Model Window ENding *************** -->
 
     <!-- ******************* Middle COntainer Ending *****************************  -->
   </body>

@@ -22,59 +22,68 @@
 
 #define IPTABLES_PATH "/sbin/iptables"
 
-
+char *source_ip, *destination_ip;
+int source_port, destination_port;
 
 /*  **************************** Rate Limiting Attack Start ***************************************************/
-int block_connection(char *src_ip, char *dst_ip, int src_port, int dst_port, char *protocol) {
-  char command[256];
-  snprintf(command, 256, "%s -A INPUT -s %s -d %s --sport %d --dport %d -p %s -j DROP",
-           IPTABLES_PATH, src_ip, dst_ip, src_port, dst_port, protocol);
-  return system(command);
+int block_connection(char *src_ip, char *dst_ip, int src_port, int dst_port, char *protocol)
+{
+    char command[256];
+    snprintf(command, 256, "%s -A INPUT -s %s -d %s --sport %d --dport %d -p %s -j DROP",
+             IPTABLES_PATH, src_ip, dst_ip, src_port, dst_port, protocol);
+    return system(command);
 }
 
-typedef struct connection_attempt {
-  char src_ip[16];
-  char dst_ip[16];
-  int src_port;
-  int dst_port;
-  time_t timestamp;
+typedef struct connection_attempt
+{
+    char src_ip[16];
+    char dst_ip[16];
+    int src_port;
+    int dst_port;
+    time_t timestamp;
 } connection_attempt;
 
 connection_attempt connection_attempts[MAX_CONNECTION_ATTEMPTS];
 int num_connection_attempts = 0;
 
-void add_connection_attempt(char *src_ip, char *dst_ip, int src_port, int dst_port) {
-  // Add a new connection attempt to the data structure
-  strncpy(connection_attempts[num_connection_attempts].src_ip, src_ip, 16);
-  strncpy(connection_attempts[num_connection_attempts].dst_ip, dst_ip, 16);
-  connection_attempts[num_connection_attempts].src_port = src_port;
-  connection_attempts[num_connection_attempts].dst_port = dst_port;
-  connection_attempts[num_connection_attempts].timestamp = time(NULL);
-  num_connection_attempts++;
+void add_connection_attempt(char *src_ip, char *dst_ip, int src_port, int dst_port)
+{
+    // Add a new connection attempt to the data structure
+    strncpy(connection_attempts[num_connection_attempts].src_ip, src_ip, 16);
+    strncpy(connection_attempts[num_connection_attempts].dst_ip, dst_ip, 16);
+    connection_attempts[num_connection_attempts].src_port = src_port;
+    connection_attempts[num_connection_attempts].dst_port = dst_port;
+    connection_attempts[num_connection_attempts].timestamp = time(NULL);
+    num_connection_attempts++;
 }
 
-int check_rate_limiting(char *src_ip, char *dst_ip, int src_port, int dst_port) {
-  // Check the rate limiting for a given connection attempt
-  int num_attempts = 0;
-  time_t current_time = time(NULL);
-  for (int i = 0; i < num_connection_attempts; i++) {
-    // Check if the connection attempt matches the source and destination IP and port
-    if (strncmp(connection_attempts[i].src_ip, src_ip, 16) == 0 &&
-        strncmp(connection_attempts[i].dst_ip, dst_ip, 16) == 0 &&
-        connection_attempts[i].src_port == src_port &&
-        connection_attempts[i].dst_port == dst_port) {
-      // Check if the connection attempt is within the rate limiting window
-      if (current_time - connection_attempts[i].timestamp < RATE_LIMITING_WINDOW) {
-        num_attempts++;
-      }
+int check_rate_limiting(char *src_ip, char *dst_ip, int src_port, int dst_port)
+{
+    // Check the rate limiting for a given connection attempt
+    int num_attempts = 0;
+    time_t current_time = time(NULL);
+    for (int i = 0; i < num_connection_attempts; i++)
+    {
+        // Check if the connection attempt matches the source and destination IP and port
+        if (strncmp(connection_attempts[i].src_ip, src_ip, 16) == 0 &&
+            strncmp(connection_attempts[i].dst_ip, dst_ip, 16) == 0 &&
+            connection_attempts[i].src_port == src_port &&
+            connection_attempts[i].dst_port == dst_port)
+        {
+            // Check if the connection attempt is within the rate limiting window
+            if (current_time - connection_attempts[i].timestamp < RATE_LIMITING_WINDOW)
+            {
+                num_attempts++;
+            }
+        }
     }
-  }
-  if (num_attempts > RATE_LIMITING_THRESHOLD) {
+    if (num_attempts > RATE_LIMITING_THRESHOLD)
+    {
 
         block_connection(src_ip, dst_ip, 80, 80, "TCP");
 
-       return 0;
-  }
+        return 0;
+    }
 }
 
 /* **************************************** Rate Limiting Attack ENding *****************************************************/
@@ -85,11 +94,11 @@ void CSRF_Detector(char *payload)
     // Check for the presence of a unique CSRF token in the payload
     if (strstr(payload, "csrf_token=") == NULL)
     {
-        printf("WARNING: Possible CSRF attack detected!and payload is == %s ",payload,"\n");
+        printf("WARNING: Possible CSRF attack detected!and payload is == %s ", payload, "\n");
         // exit(0);
     }
 }
-/* ****************** CSRF Detection Ending *******************************/ 
+/* ****************** CSRF Detection Ending *******************************/
 void XSS_Detector(char *payload)
 {
     // Check for the presence of XSS payloads in the packet payload
@@ -110,7 +119,7 @@ void XSS_Detector(char *payload)
         strstr(payload, "\x3c\x73\x63\x72\x69\x70\x74\x3e") != NULL ||
         strstr(payload, "\x3c\x2f\x73\x63\x72\x69\x70\x74\x3e") != NULL)
     {
-        printf("WARNING: XSS payload detected! and payload is == %s",payload,"\n");
+        printf("WARNING: XSS payload detected! and payload is == %s", payload, "\n");
         exit(0);
     }
 }
@@ -172,7 +181,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    packet_counts packetCounter = {.tcp_count = 0, .udp_count = 0, .http_count = 0, .https_count = 0 , .icmp_count = 0}; // for counting packets
+    packet_counts packetCounter = {.tcp_count = 0, .udp_count = 0, .http_count = 0, .https_count = 0, .icmp_count = 0}; // for counting packets
 
     // Open a raw socket
     int sockfd = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
@@ -195,20 +204,20 @@ int main(int argc, char *argv[])
         perror("bind");
         exit(1);
     }
-    
+
     static double elapsedTime;
 
-          // get the current time
+    // get the current time
     auto start = std::chrono::steady_clock::now();
 
     while (1)
     {
 
-// measure the elapsed time
-  auto end = std::chrono::steady_clock::now();
-  auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+        // measure the elapsed time
+        auto end = std::chrono::steady_clock::now();
+        auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
-  printf( "Elapsed time is == %d " , elapsed.count() );
+        printf("Elapsed time is == %d ", elapsed.count());
 
         // if the elapsed time is greater than or equal to 100 seconds
         if (elapsed.count() >= 40000.0) // Summary after every 1 minute
@@ -217,7 +226,7 @@ int main(int argc, char *argv[])
             printPackets(packetCounter);
 
             // reset the start time to the current time
-           start = std::chrono::steady_clock::now();
+            start = std::chrono::steady_clock::now();
         }
         // Read a packet from the network
         char buf[2048];
@@ -245,8 +254,10 @@ int main(int argc, char *argv[])
 
             // Parse the IP header
             struct ip *ip_hdr = (struct ip *)(buf + 14);
-            printf("Source IP: %s\n", inet_ntoa(ip_hdr->ip_src));
-            printf("Destination IP: %s\n", inet_ntoa(ip_hdr->ip_dst));
+            source_ip = inet_ntoa(ip_hdr->ip_src);
+            printf("Source IP: %s\n", source_ip);
+            destination_ip = inet_ntoa(ip_hdr->ip_dst);
+            printf("Destination IP: %s\n", destination_ip);
             printf("IP protocol: %d\n", ip_hdr->ip_p);
 
             /************************************ Logic for ICMP Packets ************************************/
@@ -270,8 +281,6 @@ int main(int argc, char *argv[])
                 show_payload(buf + 14 + (ip_hdr->ip_hl << 2) + sizeof(struct icmp6_hdr), icmp_payload_length);
 
                 packetCounter.icmp_count++;
-
-                
             }
 
             //*************** LOGIC FOR HTTP AND HTTPS PACKETS *************************************//
@@ -281,7 +290,9 @@ int main(int argc, char *argv[])
                 // Parse the TCP header
                 struct tcphdr *tcp_hdr = (struct tcphdr *)(buf + 14 + (ip_hdr->ip_hl << 2));
                 int src_port = ntohs(tcp_hdr->source);
+                source_port = src_port;
                 int dst_port = ntohs(tcp_hdr->dest);
+                destination_port = dst_port;
                 // Check if the packet is an HTTP or HTTPS packet
                 if (src_port == 80 || dst_port == 80)
                 {
@@ -294,10 +305,7 @@ int main(int argc, char *argv[])
                     packetCounter.https_count++;
                 }
 
-
-            check_rate_limiting(inet_ntoa(ip_hdr->ip_src) ,inet_ntoa(ip_hdr->ip_dst) , src_port , dst_port);
-
-
+                check_rate_limiting(inet_ntoa(ip_hdr->ip_src), inet_ntoa(ip_hdr->ip_dst), src_port, dst_port);
             }
             /************************************* ENDING OF HTTPS PACKETS ********************************************8*/
 
@@ -310,8 +318,10 @@ int main(int argc, char *argv[])
                 // Parse the TCP header
                 struct tcphdr *tcp_hdr = (struct tcphdr *)(buf + 14 + (ip_hdr->ip_hl * 4));
 
-                printf("Source port: %d\n", ntohs(tcp_hdr->source));
-                printf("Destination port: %d\n", ntohs(tcp_hdr->dest));
+                source_port = ntohs(tcp_hdr->source);
+                destination_port = ntohs(tcp_hdr->dest);
+                printf("Source port: %d\n", source_port);
+                printf("Destination port: %d\n", destination_port);
 
                 // Calculate the length of the TCP payload
                 int tcp_payload_length = bytes_read - (14 + (ip_hdr->ip_hl * 4) + (tcp_hdr->th_off * 4));
@@ -332,15 +342,16 @@ int main(int argc, char *argv[])
 
                 // Calculate the length of the UDP payload
                 int udp_payload_length = ntohs(udp_hdr->len) - sizeof(struct udphdr);
-                printf("Source port: %d\n", ntohs(udp_hdr->source));
-                printf("Destination port: %d\n", ntohs(udp_hdr->dest));
+
+                source_port = ntohs(udp_hdr->source);
+                destination_port = ntohs(udp_hdr->dest);
+                printf("Source port: %d\n", source_port);
+                printf("Destination port: %d\n", destination_port);
 
                 show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + sizeof(struct udphdr), udp_payload_length);
                 packetCounter.udp_count++;
 
-
-            check_rate_limiting(inet_ntoa(ip_hdr->ip_src) ,inet_ntoa(ip_hdr->ip_dst) , ntohs(udp_hdr->source) , ntohs(udp_hdr->dest));
-
+                check_rate_limiting(inet_ntoa(ip_hdr->ip_src), inet_ntoa(ip_hdr->ip_dst), ntohs(udp_hdr->source), ntohs(udp_hdr->dest));
             }
         }
         else if (ethertype == 0x86dd)
@@ -356,6 +367,13 @@ int main(int argc, char *argv[])
 
         // Print a separator between packets
         printf("\n");
+
+        FILE *fp = fopen("ips.txt", "a");
+
+        fprintf(fp, "Source IP: %s\nDestination IP: %s\nSource Port: %d\nDestination Port: %d\n", source_ip, destination_ip, source_port, destination_port);
+
+        // Close the file
+        fclose(fp);
     }
 
     return 0;
