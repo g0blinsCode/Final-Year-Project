@@ -4,7 +4,6 @@
 #include "rate_limiting.h"
 #include "malicious_file_execution.h"
 #include "clickjacking.h"
-#include "sql_detector.h"
 /********************************* No of packet for displaying struct here *********************************************/
 typedef struct
 {
@@ -34,7 +33,7 @@ void printPackets(packet_counts count)
 //******************************** Printing Function Ending ********************************************//
 
 /********************************* Payload of packet struct here *********************************************/
-void show_payload(char *payload, int length , vector<string> sql_payloads)
+void show_payload(char *payload, int length)
 {
     // Save the payload to a temporary file
     FILE *fp = fopen("/tmp/payload.bin", "w");
@@ -48,7 +47,7 @@ void show_payload(char *payload, int length , vector<string> sql_payloads)
     CSRF_Detector(payload);
     Malicious_File_Execution_Detector(payload);
     Clickjacking_Detector(payload);
-    SQL_Detector(payload , sql_payloads);
+    // SQL_Detector(payload);
     
 //     vector<string> sql_payloads;
 
@@ -98,16 +97,6 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    vector<string> sql_payloads;
-  ifstream file("sql.txt");
-  string line;
-  while (getline(file, line)) {
-    sql_payloads.push_back(line);
-  }
-  file.close();
-
-  // Sort the payloads
-  sort(sql_payloads.begin(), sql_payloads.end());
     // Set up the link-layer address structure
     struct sockaddr_ll sll;
     memset(&sll, 0, sizeof(sll));
@@ -195,7 +184,7 @@ int main(int argc, char *argv[])
                 // Calculate the length of the icmp payload
                 int icmp_payload_length = bytes_read - (14 + (ip_hdr->ip_hl << 2) + sizeof(struct icmp6_hdr));
                 // Display the ICMPv6 payload
-                show_payload(buf + 14 + (ip_hdr->ip_hl << 2) + sizeof(struct icmp6_hdr), icmp_payload_length , sql_payloads);
+                show_payload(buf + 14 + (ip_hdr->ip_hl << 2) + sizeof(struct icmp6_hdr), icmp_payload_length);
 
                 packetCounter.icmp_count++;
             }
@@ -244,7 +233,7 @@ int main(int argc, char *argv[])
                 int tcp_payload_length = bytes_read - (14 + (ip_hdr->ip_hl * 4) + (tcp_hdr->th_off * 4));
 
                 // Show the payload
-                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + (tcp_hdr->th_off * 4), tcp_payload_length , sql_payloads);
+                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + (tcp_hdr->th_off * 4), tcp_payload_length);
 
                 packetCounter.tcp_count++;
             }
@@ -265,7 +254,7 @@ int main(int argc, char *argv[])
                 printf("Source port: %d\n", source_port);
                 printf("Destination port: %d\n", destination_port);
 
-                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + sizeof(struct udphdr), udp_payload_length, sql_payloads);
+                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + sizeof(struct udphdr), udp_payload_length);
                 packetCounter.udp_count++;
 
                 check_rate_limiting(inet_ntoa(ip_hdr->ip_src), inet_ntoa(ip_hdr->ip_dst), ntohs(udp_hdr->source), ntohs(udp_hdr->dest));

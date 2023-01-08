@@ -1,0 +1,146 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
+@import url(https://fonts.googleapis.com/css?family=Karla:400,700);
+
+*{
+  font: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
+  color: #ffffff;
+}
+
+body{
+  background-color: #272D37;
+
+}
+
+header{
+  height: 70px;
+  overflow: hidden;
+}
+
+header img{
+  height: 25px;
+  margin-left: 95px;
+  margin-top: 25px;
+}
+
+header #my-buttons{
+  height: 50px;
+  width: 600px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 100px;
+  text-align: right;
+}
+
+header #my-buttons button{
+  line-height: 2;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: #343C49;
+  color: #A7AFB7;
+  border: 0px;
+  cursor: pointer;
+}
+
+header #my-buttons button:hover{
+  color: #5B88BA;
+}
+
+#main{
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#my-content{
+
+  height: 563px;
+  overflow: hidden;
+  padding-top: 120 px;
+}
+
+#img-box{
+  display: inline-block;
+}
+
+#text-box{
+  display: block;
+  float: right;
+  margin-right: 25px;
+  line-height: 0.1;
+}
+
+#num{
+  font-size: 25px;
+  text-align: right;
+  padding: 0%;
+}
+
+#my-text{
+  color: #A7AFB7;
+}
+
+#img-box img{
+  height: 60px;
+  margin-left: 25px;
+  margin-top: 15px;
+
+}
+
+#attack-card, #attack-card1{
+  background-color: #313844;
+  height: 180px;
+  width: 312px;
+  display: inline-block;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+#attack-card1{
+  margin-right: 0px;
+}
+
+#stats-card, #stats-card1{
+  background-color: #313844;
+  height: 290px;
+  width: 424px;
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 20px;
+  border-radius: 3px;
+}
+
+#stats-card1{
+  margin-right: 0px;
+}
+
+h4{
+  margin-left: 15px;
+}
+
+footer{
+  background-color: #2C333E;
+  height: 70px;
+  overflow: hidden;
+}
+
+footer .copyrights{
+  float: left;
+  color: #ffffff;
+  margin-top: 24px;
+  margin-left: 15px;
+}
+
+footer .links{
+  float: right;
+  margin-right: 10px;
+  margin-left: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  margin-top: 15px;
+}
+
