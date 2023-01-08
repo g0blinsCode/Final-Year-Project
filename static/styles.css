@@ -132,7 +132,8 @@ header {
   .container-middle {
     display: flex;
     /* margin-top: 5px; */
-    background-color: #DEF5E5;
+    background-color: black;
+    height: 1000px;
   
     
   }

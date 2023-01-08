@@ -16,18 +16,13 @@ db = SQLAlchemy(app)
 def hello_world():
     return render_template("index.html")
 
-
-# @app.route('/Reports')
-# def Reports():
-#     return "THis is reports Page"
-
 @app.route('/Alerts and Alarms')
 def Alerts():
     return render_template('alerts.html')
 
 @app.route('/Log Activity')
 def Logs():
-    return "LOg ACTIVITY"
+    return "Log Activity"
 
 @app.route('/report')
 def report():
@@ -93,7 +88,7 @@ def packet_info():
   return render_template('packet_info.html', packets=packet_info_list)
 
 if __name__== "__main__":
-    app.run(debug="True" , port=8001)
+    app.run(debug="True" , port=8080)
 
 
 

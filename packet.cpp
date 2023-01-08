@@ -1,129 +1,9 @@
-#include <chrono>
-#include <time.h>
-#include <netinet/ip.h>
-#include <netinet/tcp.h>
-#include <netinet/udp.h>
-#include <netinet/icmp6.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netinet/if_ether.h>
-#include <linux/if_packet.h>
-#include <signal.h>
-#include <net/if.h>
-#include <iostream>
-
-#define MAX_CONNECTION_ATTEMPTS 1000
-#define RATE_LIMITING_THRESHOLD 100
-#define RATE_LIMITING_WINDOW 60
-
-#define IPTABLES_PATH "/sbin/iptables"
-
-char *source_ip, *destination_ip;
-int source_port, destination_port;
-
-/*  **************************** Rate Limiting Attack Start ***************************************************/
-int block_connection(char *src_ip, char *dst_ip, int src_port, int dst_port, char *protocol)
-{
-    char command[256];
-    snprintf(command, 256, "%s -A INPUT -s %s -d %s --sport %d --dport %d -p %s -j DROP",
-             IPTABLES_PATH, src_ip, dst_ip, src_port, dst_port, protocol);
-    return system(command);
-}
-
-typedef struct connection_attempt
-{
-    char src_ip[16];
-    char dst_ip[16];
-    int src_port;
-    int dst_port;
-    time_t timestamp;
-} connection_attempt;
-
-connection_attempt connection_attempts[MAX_CONNECTION_ATTEMPTS];
-int num_connection_attempts = 0;
-
-void add_connection_attempt(char *src_ip, char *dst_ip, int src_port, int dst_port)
-{
-    // Add a new connection attempt to the data structure
-    strncpy(connection_attempts[num_connection_attempts].src_ip, src_ip, 16);
-    strncpy(connection_attempts[num_connection_attempts].dst_ip, dst_ip, 16);
-    connection_attempts[num_connection_attempts].src_port = src_port;
-    connection_attempts[num_connection_attempts].dst_port = dst_port;
-    connection_attempts[num_connection_attempts].timestamp = time(NULL);
-    num_connection_attempts++;
-}
-
-int check_rate_limiting(char *src_ip, char *dst_ip, int src_port, int dst_port)
-{
-    // Check the rate limiting for a given connection attempt
-    int num_attempts = 0;
-    time_t current_time = time(NULL);
-    for (int i = 0; i < num_connection_attempts; i++)
-    {
-        // Check if the connection attempt matches the source and destination IP and port
-        if (strncmp(connection_attempts[i].src_ip, src_ip, 16) == 0 &&
-            strncmp(connection_attempts[i].dst_ip, dst_ip, 16) == 0 &&
-            connection_attempts[i].src_port == src_port &&
-            connection_attempts[i].dst_port == dst_port)
-        {
-            // Check if the connection attempt is within the rate limiting window
-            if (current_time - connection_attempts[i].timestamp < RATE_LIMITING_WINDOW)
-            {
-                num_attempts++;
-            }
-        }
-    }
-    if (num_attempts > RATE_LIMITING_THRESHOLD)
-    {
-
-        block_connection(src_ip, dst_ip, 80, 80, "TCP");
-
-        return 0;
-    }
-}
-
-/* **************************************** Rate Limiting Attack ENding *****************************************************/
-
-/********************* CSRF Detection ***********************************/
-void CSRF_Detector(char *payload)
-{
-    // Check for the presence of a unique CSRF token in the payload
-    if (strstr(payload, "csrf_token=") == NULL)
-    {
-        printf("WARNING: Possible CSRF attack detected!and payload is == %s ", payload, "\n");
-        // exit(0);
-    }
-}
-/* ****************** CSRF Detection Ending *******************************/
-void XSS_Detector(char *payload)
-{
-    // Check for the presence of XSS payloads in the packet payload
-
-    /*
-        HTML encoding: "&lt;script&gt;"
-    URL encoding: "%3Cscript%3E"
-    Base64 encoding: "PHNjcmlwdD4="
-    Hex encoding: "3c7363726970743e"
-    ASCII encoding: "\x3c\x73\x63\x72\x69\x70\x74\x3e"*/
-
-    if (strstr(payload, "<script>") != NULL || strstr(payload, "</script>") != NULL ||
-        strstr(payload, "&lt;script&gt;") != NULL || strstr(payload, "&lt;/script&gt;") != NULL ||
-        strstr(payload, "%3Cscript%3E") != NULL || strstr(payload, "%3C/script%3E") != NULL ||
-        strstr(payload, "&lt;script&gt;") ||
-        strstr(payload, "PHNjcmlwdD4=") != NULL || strstr(payload, "PHNjcmlwdD4K") != NULL ||
-        strstr(payload, "3c7363726970743e") != NULL || strstr(payload, "3c2f7363726970743e") != NULL ||
-        strstr(payload, "\x3c\x73\x63\x72\x69\x70\x74\x3e") != NULL ||
-        strstr(payload, "\x3c\x2f\x73\x63\x72\x69\x70\x74\x3e") != NULL)
-    {
-        printf("WARNING: XSS payload detected! and payload is == %s", payload, "\n");
-        exit(0);
-    }
-}
-
+#include "csrf_detector.h"
+#include "headers.h"
+#include "xss_detector.h"
+#include "rate_limiting.h"
+#include "malicious_file_execution.h"
+#include "clickjacking.h"
 /********************************* No of packet for displaying struct here *********************************************/
 typedef struct
 {
@@ -137,7 +17,7 @@ typedef struct
 /********************************* No of packet for displaying struct ending *********************************************/
 
 //******************************** Printing Function Starting********************************************//
-int printPackets(packet_counts count)
+void printPackets(packet_counts count)
 {
 
     printf("\n no of Tcp packets are == %d", count.tcp_count);
@@ -146,7 +26,7 @@ int printPackets(packet_counts count)
     printf("\n no of HTTPS packets are == %d", count.https_count);
     printf("\n no of ICMP packets are == %d", count.icmp_count);
     // alarm(60);
-    sleep(5);
+    sleep(1);
     // exit(0); // here
 }
 
@@ -165,6 +45,32 @@ void show_payload(char *payload, int length)
 
     XSS_Detector(payload);
     CSRF_Detector(payload);
+    Malicious_File_Execution_Detector(payload);
+    Clickjacking_Detector(payload);
+    // SQL_Detector(payload);
+    
+//     vector<string> sql_payloads;
+
+//   // Read payloads from file
+//     fstream fin;
+    
+//     fin.open("sql.txt", ios::in);
+    
+//     string line;
+  
+//   while (getline(fin, line)) {
+//     sql_payloads.push_back(line);
+//   }
+//   fin.close();
+
+//   // Sort payloads
+//   std::sort(sql_payloads.begin(), sql_payloads.end());
+
+//   // Test the SQL injection detection function
+//   char sql[] = "SELECT * FROM users WHERE username = 'admin' AND password = 'password' OR '1'='1'";
+
+//   SQL_Detector(sql, sql_payloads);
+
 }
 
 /********************************* Payload of packet struct here *********************************************/
