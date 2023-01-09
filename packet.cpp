@@ -70,10 +70,11 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Usage: %s <interface>\n", argv[0]);
         exit(1);
     }
-
+    //  Declaring packet counts variable for packetCounter
     packet_counts packetCounter = {.tcp_count = 0, .udp_count = 0, .http_count = 0, .https_count = 0, .icmp_count = 0}; // for counting packets
 
     // Open a raw socket
+    //PF => Packet oriented Communication , raw for network layer , eth => ethhernet interface
     int sockfd = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
     if (sockfd == -1)
     {
@@ -157,7 +158,7 @@ int main(int argc, char *argv[])
 
         // Check the ethertype to determine the type of the packet
         uint16_t ethertype = (buf[12] << 8) | buf[13];
-        if (ethertype == 0x0800)
+        if (ethertype == 0x0800) //IPv4 packets (0x0800)
         {
             // IPv4 packet
             printf("IPv 4 packet\n");
@@ -220,7 +221,7 @@ int main(int argc, char *argv[])
             /************************************* ENDING OF HTTPS PACKETS ********************************************8*/
 
             // Check the protocol to determine the type of the payload
-            if (ip_hdr->ip_p == 6)
+            if (ip_hdr->ip_p == 6)//TCP (6), UDP (17), ICMP (1)
             {
                 // TCP packet
                 printf("TCP packet\n");
