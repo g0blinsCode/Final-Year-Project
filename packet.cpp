@@ -5,6 +5,9 @@
 #include "malicious_file_execution.h"
 #include "clickjacking.h"
 #include "sql_detector.h"
+#include "remote_code_execution.h"
+
+vector <string> rce_payloads;
 /********************************* No of packet for displaying struct here *********************************************/
 typedef struct
 {
@@ -34,7 +37,7 @@ void printPackets(packet_counts count)
 //******************************** Printing Function Ending ********************************************//
 
 /********************************* Payload of packet struct here *********************************************/
-void show_payload(char *payload, int length , vector<string> sql_payloads)
+void show_payload(char *payload, int length , vector<string> sql_payloads , vector<string> rce_payloads)
 {
     // Save the payload to a temporary file
     FILE *fp = fopen("/tmp/payload.bin", "w");
@@ -49,28 +52,8 @@ void show_payload(char *payload, int length , vector<string> sql_payloads)
     Malicious_File_Execution_Detector(payload);
     Clickjacking_Detector(payload);
     SQL_Detector(payload , sql_payloads);
-    
-//     vector<string> sql_payloads;
+    RCE_Detector(payload , rce_payloads);
 
-//   // Read payloads from file
-//     fstream fin;
-    
-//     fin.open("sql.txt", ios::in);
-    
-//     string line;
-  
-//   while (getline(fin, line)) {
-//     sql_payloads.push_back(line);
-//   }
-//   fin.close();
-
-//   // Sort payloads
-//   std::sort(sql_payloads.begin(), sql_payloads.end());
-
-//   // Test the SQL injection detection function
-//   char sql[] = "SELECT * FROM users WHERE username = 'admin' AND password = 'password' OR '1'='1'";
-
-//   SQL_Detector(sql, sql_payloads);
 
 }
 
@@ -99,15 +82,25 @@ int main(int argc, char *argv[])
     }
 
     vector<string> sql_payloads;
-  ifstream file("sql.txt");
-  string line;
-  while (getline(file, line)) {
+     ifstream file("sql.txt");
+    string line;
+    while (getline(file, line)) {
     sql_payloads.push_back(line);
   }
   file.close();
 
+    file.open("rce.txt");
+    line.clear();
+    while (getline(file, line)) {
+    rce_payloads.push_back(line);
+  }
+  file.close();
+    
+
+
   // Sort the payloads
   sort(sql_payloads.begin(), sql_payloads.end());
+   sort(rce_payloads.begin() , rce_payloads.end());
     // Set up the link-layer address structure
     struct sockaddr_ll sll;
     memset(&sll, 0, sizeof(sll));
@@ -195,7 +188,7 @@ int main(int argc, char *argv[])
                 // Calculate the length of the icmp payload
                 int icmp_payload_length = bytes_read - (14 + (ip_hdr->ip_hl << 2) + sizeof(struct icmp6_hdr));
                 // Display the ICMPv6 payload
-                show_payload(buf + 14 + (ip_hdr->ip_hl << 2) + sizeof(struct icmp6_hdr), icmp_payload_length , sql_payloads);
+                show_payload(buf + 14 + (ip_hdr->ip_hl << 2) + sizeof(struct icmp6_hdr), icmp_payload_length , sql_payloads , rce_payloads);
 
                 packetCounter.icmp_count++;
             }
@@ -244,7 +237,7 @@ int main(int argc, char *argv[])
                 int tcp_payload_length = bytes_read - (14 + (ip_hdr->ip_hl * 4) + (tcp_hdr->th_off * 4));
 
                 // Show the payload
-                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + (tcp_hdr->th_off * 4), tcp_payload_length , sql_payloads);
+                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + (tcp_hdr->th_off * 4), tcp_payload_length , sql_payloads , rce_payloads);
 
                 packetCounter.tcp_count++;
             }
@@ -265,7 +258,7 @@ int main(int argc, char *argv[])
                 printf("Source port: %d\n", source_port);
                 printf("Destination port: %d\n", destination_port);
 
-                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + sizeof(struct udphdr), udp_payload_length, sql_payloads);
+                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + sizeof(struct udphdr), udp_payload_length, sql_payloads , rce_payloads);
                 packetCounter.udp_count++;
 
                 check_rate_limiting(inet_ntoa(ip_hdr->ip_src), inet_ntoa(ip_hdr->ip_dst), ntohs(udp_hdr->source), ntohs(udp_hdr->dest));
