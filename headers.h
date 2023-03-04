@@ -22,6 +22,7 @@
 #include <iostream>
 #include <cstring>
 #include <string>
+#include <stdio.h>
 
 using namespace std;
 

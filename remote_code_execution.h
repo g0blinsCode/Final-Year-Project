@@ -9,7 +9,7 @@ void RCE_Detector(char* payload, const std::vector<std::string>& rce_payloads) {
         // Search for the string in the payload
         if (strstr(payload, str_ptr) != NULL) {
             // The string was found in the payload
-        printf("WARNING: XSS payload detected! and payload is == %s", payload, "\n");
+        printf("WARNING: RCE payload detected! and payload is == %s", payload, "\n");
             // sleep(5);
         }
     }

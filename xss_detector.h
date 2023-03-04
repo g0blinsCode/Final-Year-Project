@@ -2,7 +2,7 @@
 #define xss_detector_h
 #include "headers.h"
 
-void XSS_Detector(char *payload)
+void XSS_Detector(char* payload, const std::vector<std::string>& xss_payloads)
 {
     // Check for the presence of XSS payloads in the packet payload
 
@@ -28,25 +28,18 @@ void XSS_Detector(char *payload)
 // Base64 encoding: "YWxlcnQ="
 // Hex encoding: "616c657274"
 // ASCII encoding: "\x61\x6c\x65\x72\x74"
-    if (strstr(payload, "<script>") != NULL || strstr(payload, "</>") != NULL ||
-        strstr(payload, "&lt;script&gt;") != NULL || strstr(payload, "&lt;/script&gt;") != NULL ||
-        strstr(payload, "%3Cscript%3E") != NULL || strstr(payload, "%3C/script%3E") != NULL ||
-        strstr(payload, "&lt;script&gt;") ||
-        strstr(payload, "PHNjcmlwdD4=") != NULL || strstr(payload, "PHNjcmlwdD4K") != NULL ||
-        strstr(payload, "3c7363726970743e") != NULL || strstr(payload, "3c2f7363726970743e") != NULL ||
-        strstr(payload, "\\x3c\\x73\\x63\\x72\\x69\\x70\\x74\\x3e") != NULL ||
-        strstr(payload, "\x3c\x2f\x73\x63\x72\x69\x70\x74\x3e") != NULL
-        ||strstr(payload, "&lt;script&gt;") != NULL ||strstr(payload, "%3Cscript%3E") != NULL||
-        strstr(payload, "PHNjcmlwdD4=") != NULL ||strstr(payload, "3c7363726970743e") != NULL 
-        ||strstr(payload, "\\x3c\\x73\\x63\\x72\\x69\\x70\\x74\\x3e") != NULL||strstr(payload, "<script>") != NULL
-        ||strstr(payload, "&alert;") != NULL||strstr(payload, "%61%6c%65%72%74") != NULL
-        ||strstr(payload, "YWxlcnQ=") != NULL||strstr(payload, "616c657274") != NULL
-        ||strstr(payload, "/x61\x6c\x65\x72\x74") != NULL)
-    {
+    for (const std::string& str : xss_payloads) {
+        // Get a pointer to the character array represented by the string
+        const char* str_ptr = str.c_str();
+
+        // Search for the string in the payload
+        if (strstr(payload, str_ptr) != NULL) {
+            // The string was found in the payload
         printf("WARNING: XSS payload detected! and payload is == %s", payload, "\n");
-        sleep(5);
+            // sleep(5);
+        }
     }
-}
+ }
 
 
 #endif
