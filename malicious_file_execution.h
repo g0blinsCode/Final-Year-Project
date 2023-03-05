@@ -9,6 +9,10 @@ void Malicious_File_Execution_Detector(char *payload) {
       strstr(payload, ".vbs") != NULL || strstr(payload, ".js") != NULL || strstr(payload, ".php") != NULL ||
       strstr(payload, ".py") != NULL) {
     printf("WARNING: Malicious file execution payload detected!\n");
+             FILE *fp;
+            fp = fopen("mfe_output.txt", "a");
+            fprintf(fp, "%s", payload);
+            fclose(fp);   
     // exit(0);
     sleep(5);
   }

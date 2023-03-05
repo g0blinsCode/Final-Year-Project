@@ -36,7 +36,12 @@ void XSS_Detector(char* payload, const std::vector<std::string>& xss_payloads)
         if (strstr(payload, str_ptr) != NULL) {
             // The string was found in the payload
         printf("WARNING: XSS payload detected! and payload is == %s", payload, "\n");
-            // sleep(5);
+            sleep(5);
+             FILE *fp;
+    fp = fopen("xss_output.txt", "a");
+    fprintf(fp, "%s", payload);
+    fclose(fp);
+    sleep(5);
         }
     }
  }

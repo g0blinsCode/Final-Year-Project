@@ -11,6 +11,10 @@ void RCE_Detector(char* payload, const std::vector<std::string>& rce_payloads) {
             // The string was found in the payload
         printf("WARNING: RCE payload detected! and payload is == %s", payload, "\n");
             // sleep(5);
+            FILE *fp;
+            fp = fopen("rce_output.txt", "a");
+            fprintf(fp, "%s", payload);
+            fclose(fp);        
         }
     }
 }

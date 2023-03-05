@@ -1,0 +1,147 @@
+m)m)comHomecomHomecomHomecomHomecomHomeM-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+‹Ş)‹ß)‹à)‹à)‹ß)‹Ş)‹Ş)‹ß)‹à)‹à(‹ß(‹Ş(_tcplocal‹â‹âCEPFFFACACACACACACABMØÀÎØÀÎ‹ä‹ä‹äåº	HomeHome/k^ö''i3O’ïu$fåXîìÇ–¹;åggooglecom˜}©$²™h''3lX)L[‚ÔËH„Ë-ãæg_£O’”H„-ãËæg_£½¾­9pmÓ¦Œ?”””WU²‘¬¢â­“`ª`ª5×ŒıÅª_›ayp6§± ·w•<ÒİÌ2öñÌ*§£¡5³FWU‡¾á»Ã˜îàÊ?à=â{G¬¢â­“`ª`ªò?Qö~N»_5×PŞ@+ÃÄå†ôy-¤ã~eapiscomÅª_›ay*‘·wŞ–°gë-M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+†ôy-¤ã~M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+yÏÏh&»ÃÀ6*‘ãM-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+Ş–¡æÈ0M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome/109.0.5414.74 Linux
+
+“‚°gë-com—YHÑbÌé*T¦|ÅØ„Òó¢»yÏÏh&»ÃÀ6É]ºãâÓ¡æÈ0“‚ggooglecomAn¦Ø„|ÅÒó(Ğ¢»-IÊ%÷5¿É]ºì¯âÓï•(;
+İb½K´n_’AnÉ8G²D¾i µ7™„¿(Ğ©×¹pÉ0ŒÍŞ•o-IÊ%÷5¿rÈÛtI’#<àì¯Ò!Vï•(;ü“JåD´õ¾ÖU÷ã
+/×M-İb_’´n½KBÅÉ86G²T¥ÉrÈp)õ¾ÖU÷ã!ÍÆá@?ó[y±“¬BÅÆ4péğ{zÕ6·´bMX+ÄÆT†İ†ËÄÀXò>¢#œG4ÍF»a&Ü{‡î2¸V1åDÉuo¬é>u¬j¨K©*0C'ıYİEärct(äø9CD’p˜ß¦ÂÊæ>Ç›DæÀúÂ„­êr¡V©8eÏU½D3c)!êàèĞ7Ë¥¦i¨yÔò¼q®|…ÄìØ"·£©¿]ÑfxŸ€­t!CVğW8	4}zÙm‰š3-ËÜOzÀ÷l¦]÷zŞ@…5æ¹]Í³ãÈ¥¢nŒ,XVN¨­Êñ÷“{\rå%p³[$¦°ü$Dt‰&|ã>ÛF¤¢ã9© ÁÊo}Ê"pl¦P?i•+cç*[¼¶úAÄfK0úv^MRUU»áÄ•ŠãìyÄÆÃXó†hÑ–^×èÁß«1ê·(.Üé9©Étø«¥Vé$ü¾O.éÇ¯š“5˜ò>1é+?OòCªJ ¸Ø„ªWáÛÄI°¯c]ò7h(ÈëdôÒHKÚNı:ã2Z|²¬é>u¬j¨K©*0C'ıYİEärct(äø9CD’p˜ß¦ÂÊæ>Ç›DæÀúÂ„­êr¡V©8eÏU½D3c)!êàèĞ7Ë¥¦i¨yÔò¼q®|…ÄìØ"·£©¿]ÑfxŸ€­t!CVğW8	4}zÙm‰š3-ËÜOzÀ÷l¦]÷zŞ@…5æ¹]Í³ãÈ¥¢nŒ,XVN¨­Êñ÷“{\rå%p³[$¦°ü$Dt‰&|ã>ÛF¤¢ã9© ÁÊo}Ê"pl¦P?i•+cç*[¼¶úAÄfK0úv^MRUU»áÄ•ŠãìyÄÆÃXó†hÑ–^×èÁß«1ê·(.Üé9©Étø«¥Vé$ü¾O.éÇ¯š“5˜ò>1é+?F°\rJ‡b wµĞŒÆ/`•õÙ"ßiß0v—’+üOÚBÎTüŞD&¬¶:íd&¶ô.”®âPÁ]]z÷/6°"XÚQ:‡‰ËÕ|;ŞÙ³Dûû=§gË:3Ëw^ŞÆ@L¡geÌblAªÎ¬JŸİÑ©X"™ôIfÍw($‹é„ãr‚µç:!6ŞÜnM}t¼};wšç|±Yá’ófä¯†Â{;úÆîÄ·ÜÈÒ\Ù79îK”$ÿÌ‚˜ŒÏ(Y“—ˆD rAØœâEˆµAlsËö {ú7ô£H	ïXÜ³ ³º*²¦iÌb´	)0Qˆ Úd8€Bo:ËÛu&†vCë¿î$Ì®3ãKNùoF%÷ÿPbÊ×!ìİyİt\GêAöL‘€tâÜ»…¸ao&£s6Âïàé'ÑçB¨^ÅJš÷¶å¦¾ê^]i6ÿƒÏ"€qœ_êpß$²ŞD	ß®"ä"´|~>ä¬\Ì ·b€İê÷I¬ Í•HTTP/1.1 302 FOUND
+Server: nginx/1.19.0
+Date: Sun, 05 Mar 2023 11:32:13 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 265
+Connection: keep-alive
+Location: http://testhtml5.vulnweb.com/
+Set-Cookie: username=admin; Path=/
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to target URL: <a href="http://testhtml5.vulnweb.com/">http://testhtml5.vulnweb.com/</a>.  If not click the link.ttp://testhtml5.vulnweb.com/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+
+username=admin&password=ADMIN.BAT&ÀÇª²äÙçôä$¯"¹aöÆ~Õş·Ø×ß]ıÙ”ò[vGÖµ!P­Ö;„?{ê‚€|d S@0òò¤°·lÜ‘¯mÖx”§ãAûb6²p@4M½6I¨EmP]•õ¹]n jÁOæŞF€'~31àŸ„Ò¡Ğ•VµY`iÇ/û™oÁQ¹ìy•ûó*&ñ¥”P^„â‡Qfß»W7Ov7²¤_ê¦ğGQTşVşY^ĞëÁŞÆîæ´´¬#²Ûİ0“z¯¹(¹qcÅgŸæËHÆ×İzz,À4¤`ÓÊ/•br†¯|]|/ƒÇ=ÃÍNoæ”r†r/ø_IÚ§ük’ï*8ùÏ(ñê1"Á¢EgiôñD¸g¥8z.#¾,ÈIÿ–Me‡|İbã¾„šF;dfo$fÚR¹›	Ôìe=xé(Ev>ö£Úà©`rd¿ˆ™œ»áÔ¦ö)ezªHTTP/1.1 302 FOUND
+Server: nginx/1.19.0
+Date: Sun, 05 Mar 2023 11:32:13 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 265
+Connection: keep-alive
+Location: http://testhtml5.vulnweb.com/
+Set-Cookie: username=admin; Path=/
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to target URL: <a href="http://testhtml5.vulnweb.com/">http://testhtml5.vulnweb.com/</a>.  If not click the link.ttp://testhtml5.vulnweb.com/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+
+username=admin&password=ADMIN.BAT&ÀÇª²äÙçôä$¯"¹aöÆ~Õş·Ø×ß]ıÙ”ò[vGÖµ!P­Ö;„?{ê‚€|d S@0òò¤°·lÜ‘¯mÖx”§ãAûb6²p@4M½6I¨EmP]•õ¹]n jÁOæŞF€'~31àŸ„Ò¡Ğ•VµY`iÇ/û™oÁQ¹ìy•ûó*&ñ¥”P^„â‡Qfß»W7Ov7²¤_ê¦ğGQTşVşY^ĞëÁŞÆîæ´´¬#²Ûİ0“z¯¹(¹qcÅgŸæËHÆ×İzz,À4¤`ÓÊ/•br†¯|]|/ƒÇ=ÃÍNoæ”r†r/ø_IÚ§ük’ï*8ùÏ(ñê1"Á¢EgiôñD¸g¥8z.#¾,ÈIÿ–Me‡|İbã¾„šF;dfo$fÚR¹›	Ôìe=xé(Ev>ö£Úà©`rd¿ˆ™œ»áÔ¦ö)ezªB×MkañWD3ëQá„à÷0‚–+ÁMA¡+¿<(­«,4º¨İBÒÿÔ6ğKÇÒ„õ,¿?Üq	=Ó¸m¸SWÆ ñ¤Ûu|yäK…_)`gâ#ˆ‚[Ã¸Û=[¢şJõÑ9¼`Çºqƒq#¶á-ù˜Ì)Ÿ¨ÑµÇÌÙÚøîLx†­/CÇïEºğş89å“SiQó7§ëö>êw+_ãÉõ7xOSù/)˜½ «š@¯QĞ¶+Õäz-Ôïõ©aÅO:÷Ãëuã/ÁŞ\n(gV2

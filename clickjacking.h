@@ -8,5 +8,9 @@ void Clickjacking_Detector(char *payload) {
   // Check for the presence of clickjacking payloads in the packet payload
   if (strstr(payload, "clickjacking") != NULL) {
     printf("WARNING: Clickjacking payload detected!\n");
+    FILE *fp;
+    fp = fopen("clickjacking_output.txt", "a");
+    fprintf(fp, "%s", payload);
+    fclose(fp);
   }
 }

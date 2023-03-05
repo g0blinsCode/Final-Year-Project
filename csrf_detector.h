@@ -7,7 +7,7 @@ void CSRF_Detector(char *payload) {
   if (strstr(payload, "csrf_token") != NULL || strstr(payload, "csrf-token") != NULL) {
     printf("WARNING: CSRF payload detected!\n");
     FILE *fp;
-    fp = fopen("csrf1.txt", "w");
+    fp = fopen("csrf_output.txt", "a");
     fprintf(fp, "%s", payload);
     fclose(fp);
   }

@@ -23,6 +23,10 @@ void SQL_Detector(char *payload, vector<string> &payloads) {
     if (binary_search(payloads.begin(), payloads.end(), words[i])) {
       printf("WARNING: SQL injection payload detected! payload == %s\n", words[i].c_str());
     //   exit(0);
+     FILE *fp;
+    fp = fopen("sql_output.txt", "a");
+    fprintf(fp, "%s", payload);
+    fclose(fp);
     sleep(5);
     }
   }
