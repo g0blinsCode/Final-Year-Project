@@ -9,7 +9,8 @@
 
 #define IPTABLES_PATH "/sbin/iptables"
 
-char *source_ip, *destination_ip;
+char *source_ip;
+char *destination_ip;
 int source_port, destination_port;
 
 /*  **************************** Rate Limiting Attack Start ***************************************************/

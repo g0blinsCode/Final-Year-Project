@@ -13,7 +13,7 @@ void Malicious_File_Execution_Detector(char *payload) {
             fp = fopen("mfe_output.txt", "a");
             fprintf(fp, "%s", payload);
             fclose(fp);   
-    // exit(0);
-    sleep(5);
+    exit(0);
+  
   }
 }

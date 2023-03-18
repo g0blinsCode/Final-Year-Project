@@ -4,7 +4,7 @@
 
 
 // SQL injection detection function
-void SQL_Detector(char *payload, vector<string> &payloads) {
+void SSRF_Detector(char *payload, vector<string> &payloads) {
   // Split the payload into words
   vector<string> words;
   string word = "";
@@ -21,14 +21,13 @@ void SQL_Detector(char *payload, vector<string> &payloads) {
   // Check for the presence of payloads
   for (int i = 0; i < words.size(); i++) {
     if (binary_search(payloads.begin(), payloads.end(), words[i])) {
-      printf("WARNING: SQL injection payload detected! payload == %s\n", words[i].c_str());
+      printf("WARNING: SSRF payload detected! payload == %s\n", words[i].c_str());
     //   exit(0);
      FILE *fp;
-    fp = fopen("sql_output.txt", "a");
+    fp = fopen("ssrf_output.txt", "a");
     fprintf(fp, "%s", payload);
     fclose(fp);
-    // sleep(1);
-    exit(0);
+    sleep(5);
     }
   }
 }
