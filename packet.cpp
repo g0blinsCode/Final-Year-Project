@@ -7,11 +7,14 @@
 #include "sql_detector.h"
 #include "remote_code_execution.h"
 #include "ssrf.h"
+#include "xss1.h"
+#include "xss2.h"
 
 vector <string> rce_payloads;
 vector <string> xss_payloads;
 vector <string> ssrf_payloads;
 
+    XSSNode* xss_root = new XSSNode();
 // char *source_ip , *destination_ip;
 // int source_port , destination_port;
 /********************************* No of packet for displaying struct here *********************************************/
@@ -64,6 +67,13 @@ void show_payload(char *payload, int length , vector<string> sql_payloads , vect
     // RCE_Detector(payload , rce_payloads);
     SSRF_Detector(payload ,ssrf_payloads);
     // sleep(1);
+    // xss_detect(payload);
+    // bool isMalicious = search(xss_root, payload);
+
+    // if (isMalicious) {
+    //     cout << "Malicious payload detected!" << endl;
+    //     sleep(5);
+    // }
 
 }
 
@@ -114,6 +124,23 @@ int main(int argc, char *argv[])
   }
   file.close();
     
+    //Testing
+    file.open("xss_payload.txt");
+    line.clear();
+    while (getline(file, line)) {
+    insert(xss_root, line);
+  }
+  file.close();
+  
+    //Testing
+  
+  file.open("xss_payload.txt");
+    line.clear();
+    while (getline(file, line)) {
+    xss_payloads.push_back(line);
+  }
+  file.close();
+
 
     file.open("xss_payload.txt");
     line.clear();
