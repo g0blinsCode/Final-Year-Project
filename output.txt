@@ -1,0 +1,15 @@
+ XSS Payload Detected .... Payload is >> '-alert(1)// << found in data payload Source IP attacking is  >> 44.228.249.3 << and Destination IP is >> 44.228.249.3 << 
+ XSS Payload Detected .... Payload is >> \'-alert(1)// << found in data payload Source IP attacking is  >> 44.228.249.3 << and Destination IP is >> 44.228.249.3 << 
+ XSS Payload Detected .... Payload is >> <x oncopy=alert(1)>copy this!  << found in data payload Source IP attacking is  >> 192.168.10.6 << and Destination IP is >> 192.168.10.6 << 
+ XSS Payload Detected .... Payload is >> <x oncopy=alert(1)>copy this!  << found in data payload Source IP attacking is  >> 44.228.249.3 << and Destination IP is >> 44.228.249.3 << 
+ XSS Payload Detected .... Payload is >> <x oncopy=alert(1)>copy this!  << found in data payload Source IP attacking is  >> 52.218.169.179 << and Destination IP is >> 52.218.169.179 << 
+ XSS Payload Detected .... Payload is >> <% << found in data payload Source IP attacking is  >> 192.168.10.6 << and Destination IP is >> 192.168.10.6 << 
+ XSS Payload Detected .... Payload is >> <% << found in data payload Source IP attacking is  >> 20.42.72.131 << and Destination IP is >> 20.42.72.131 << 
+ XSS Payload Detected .... Payload is >> <svg onload=alert(1)> << found in data payload Source IP attacking is  >> 192.168.10.6 << and Destination IP is >> 192.168.10.6 << 
+ XSS Payload Detected .... Payload is >> </script><svg onload=alert(1)> << found in data payload Source IP attacking is  >> 192.168.10.6 << and Destination IP is >> 192.168.10.6 << 
+ XSS Payload Detected .... Payload is >> <svg onload=alert(1)> << found in data payload Source IP attacking is  >> 44.228.249.3 << and Destination IP is >> 44.228.249.3 << 
+ XSS Payload Detected .... Payload is >> </script><svg onload=alert(1)> << found in data payload Source IP attacking is  >> 44.228.249.3 << and Destination IP is >> 44.228.249.3 << 
+ XSS Payload Detected .... Payload is >> <svg onload=alert(1)> << found in data payload Source IP attacking is  >> 69.16.175.10 << and Destination IP is >> 69.16.175.10 << 
+ XSS Payload Detected .... Payload is >> </script><svg onload=alert(1)> << found in data payload Source IP attacking is  >> 69.16.175.10 << and Destination IP is >> 69.16.175.10 << 
+ XSS Payload Detected .... Payload is >> <svg onload=alert(1)> << found in data payload Source IP attacking is  >> 172.217.22.46 << and Destination IP is >> 172.217.22.46 << 
+ XSS Payload Detected .... Payload is >> </script><svg onload=alert(1)> << found in data payload Source IP attacking is  >> 172.217.22.46 << and Destination IP is >> 172.217.22.46 << 

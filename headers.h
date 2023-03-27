@@ -23,6 +23,7 @@
 #include <cstring>
 #include <string>
 #include <stdio.h>
+#include "output.h"
 
 using namespace std;
 

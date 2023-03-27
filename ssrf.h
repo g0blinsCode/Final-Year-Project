@@ -2,32 +2,31 @@
 #include "headers.h"
 #include "xss_detector.h"
 
-
-// SQL injection detection function
-void SSRF_Detector(char *payload, vector<string> &payloads) {
-  // Split the payload into words
-  vector<string> words;
-  string word = "";
-  for (int i = 0; i < strlen(payload); i++) {
-    if (payload[i] == ' ' || payload[i] == '\n' || payload[i] == '\t' || payload[i] == '\r') {
-      if (word != "") words.push_back(word);
-      word = "";
-    } else {
-      word += payload[i];
+bool check_ssrf_payload(string data_payload, string payload) {
+    size_t found = data_payload.find(payload);
+    if (found != string::npos) {
+        return true;
     }
-  }
-  if (word != "") words.push_back(word);
+    return false;
+}
 
-  // Check for the presence of payloads
-  for (int i = 0; i < words.size(); i++) {
-    if (binary_search(payloads.begin(), payloads.end(), words[i])) {
-      printf("WARNING: SSRF payload detected! payload == %s\n", words[i].c_str());
-    //   exit(0);
-     FILE *fp;
-    fp = fopen("ssrf_output.txt", "a");
-    fprintf(fp, "%s", payload);
-    fclose(fp);
-    sleep(5);
+void SSRF_Detector(char *data_payload){
+
+    string file_name = "ssrf_payload.txt";
+    ifstream infile(file_name);
+    string payload;
+
+    if (!infile) {
+        cout << "Error opening file: " << file_name << endl;
     }
-  }
+
+    while (getline(infile, payload)) {
+        if (check_ssrf_payload(data_payload, payload)) {
+            cout<<"\n SSRF Payload Detected ....";
+            cout << "\nPayload >>" << payload << " << found in data payload." << endl;
+            // exit(0);
+        }
+    }
+
+    infile.close();
 }
