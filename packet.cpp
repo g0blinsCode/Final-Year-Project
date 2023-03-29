@@ -29,13 +29,13 @@ typedef struct
 void printPackets(packet_counts count)
 {
 
-    printf("\n no of Tcp packets are == %d", count.tcp_count);
+    printf("\n no of TCP packets are == %d", count.tcp_count);
     printf("\n no of UDP packets are == %d", count.udp_count);
     printf("\n no of HTTP packets are == %d", count.http_count);
     printf("\n no of HTTPS packets are == %d", count.https_count);
     printf("\n no of ICMP packets are == %d", count.icmp_count);
     printf("\n no of IPV6 packets are == %d", count.ipv6_count);
-    printf("\n no of Unknown packets are == %d", count.unknow_count);
+    printf("\n no of Unknown packets are == %d", count.unknow_count,  "\n");
 
 
     // alarm(60);
@@ -47,7 +47,7 @@ void printPackets(packet_counts count)
 
 /********************************* Payload of packet struct here *********************************************/
 
-void show_payload(char *payload, int length , vector<string> sql_payloads , vector<string> rce_payloads, vector<string> xss_payloads , char* source_ip , char *destination_ip)
+void show_payload(char *payload, int length , char* source_ip , char *destination_ip)
 {
     // Save the payload to a temporary file
     // printf("Testing\n");
@@ -61,10 +61,11 @@ void show_payload(char *payload, int length , vector<string> sql_payloads , vect
 
     XSS_Detector(payload , source_ip , destination_ip);
     // CSRF_Detector(payload);
-    // Malicious_File_Execution_Detector(payload);
-    // Clickjacking_Detector(payload);
-    // SQL_Detector(payload);
-    // RCE_Detector(payload);
+    MaliciousFileExecution_Detector(payload, source_ip , destination_ip);
+    // Clickjacking_Detector(payload, source_ip , destination_ip);
+    SQL_Detector(payload, source_ip , destination_ip);
+    RCE_Detector(payload, source_ip , destination_ip);
+    SSRF_Detector(payload, source_ip , destination_ip);
 }
 
 /********************************* Payload of packet struct here *********************************************/
@@ -93,57 +94,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    vector<string> sql_payloads;
-     ifstream file("sql.txt");
-    string line;
-    while (getline(file, line)) {
-    sql_payloads.push_back(line);
-  }
-  file.close();
-    line=" ";
-  file.open("ssrf.txt");
-    while (getline(file, line)) {
-    ssrf_payloads.push_back(line);
-  }
-  file.close();
-
-    file.open("rce.txt");
-    line.clear();
-    while (getline(file, line)) {
-    rce_payloads.push_back(line);
-  }
-  file.close();
-    
-    //Testing
-    file.open("xss_payload.txt");
-    line.clear();
-    while (getline(file, line)) {
-  }
-  file.close();
-  
-    //Testing
-  
-  file.open("xss_payload.txt");
-    line.clear();
-    while (getline(file, line)) {
-    xss_payloads.push_back(line);
-  }
-  file.close();
-
-
-    file.open("xss_payload.txt");
-    line.clear();
-    while (getline(file, line)) {
-    xss_payloads.push_back(line);
-  }
-  file.close();
-
-
-  // Sort the payloads
-  sort(sql_payloads.begin(), sql_payloads.end());
-   sort(rce_payloads.begin() , rce_payloads.end());
-   sort(ssrf_payloads.begin() , ssrf_payloads.end());
-    // Set up the link-layer address structure
+      // Set up the link-layer address structure
     struct sockaddr_ll sll;
     memset(&sll, 0, sizeof(sll));
     sll.sll_family = AF_PACKET;
@@ -236,7 +187,7 @@ int main(int argc, char *argv[])
                 // Calculate the length of the icmp payload
                 int icmp_payload_length = bytes_read - (14 + (ip_hdr->ip_hl << 2) + sizeof(struct icmp6_hdr));
                 // Display the ICMPv6 payload
-                show_payload(buf + 14 + (ip_hdr->ip_hl << 2) + sizeof(struct icmp6_hdr), icmp_payload_length , sql_payloads , rce_payloads , xss_payloads , source_ip , destination_ip);
+                show_payload(buf + 14 + (ip_hdr->ip_hl << 2) + sizeof(struct icmp6_hdr), icmp_payload_length , source_ip , destination_ip);
 
                 packetCounter.icmp_count++;
             }
@@ -266,7 +217,7 @@ int main(int argc, char *argv[])
                     printf("HTTPS packet\n");
                     packetCounter.https_count++;
                 }
-                show_payload(buf + 14 + (ip_hdr->ip_hl << 2) + (tcp_hdr->doff << 2), tcp_payload_length, sql_payloads, rce_payloads, xss_payloads, source_ip , destination_ip);
+                show_payload(buf + 14 + (ip_hdr->ip_hl << 2) + (tcp_hdr->doff << 2), tcp_payload_length , source_ip , destination_ip);
 
                 // check_rate_limiting(inet_ntoa(ip_hdr->ip_src), inet_ntoa(ip_hdr->ip_dst), src_port, dst_port);
 
@@ -291,7 +242,7 @@ int main(int argc, char *argv[])
                 int tcp_payload_length = bytes_read - (14 + (ip_hdr->ip_hl * 4) + (tcp_hdr->th_off * 4));
 
                 // Show the payload
-                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + (tcp_hdr->th_off * 4), tcp_payload_length , sql_payloads , rce_payloads , xss_payloads, source_ip , destination_ip);
+                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + (tcp_hdr->th_off * 4), tcp_payload_length , source_ip , destination_ip);
 
                 packetCounter.tcp_count++;
             }
@@ -312,7 +263,7 @@ int main(int argc, char *argv[])
                 printf("Source port: %d\n", source_port);
                 printf("Destination port: %d\n", destination_port);
 
-                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + sizeof(struct udphdr), udp_payload_length, sql_payloads , rce_payloads , xss_payloads, source_ip , destination_ip);
+                show_payload(buf + 14 + (ip_hdr->ip_hl * 4) + sizeof(struct udphdr), udp_payload_length, source_ip , destination_ip);
                 packetCounter.udp_count++;
 
                 // check_rate_limiting(inet_ntoa(ip_hdr->ip_src), inet_ntoa(ip_hdr->ip_dst), ntohs(udp_hdr->source), ntohs(udp_hdr->dest));
@@ -329,7 +280,7 @@ int main(int argc, char *argv[])
             int payload_length = ntohs(ip6_hdr->ip6_plen);
             // Display the payload
             packetCounter.ipv6_count++;
-            show_payload(buf + 14 + sizeof(struct ip6_hdr), payload_length, sql_payloads, rce_payloads, xss_payloads, source_ip , destination_ip);
+            show_payload(buf + 14 + sizeof(struct ip6_hdr), payload_length , source_ip , destination_ip);
         }
         else
         {
@@ -341,12 +292,6 @@ int main(int argc, char *argv[])
         // Print a separator between packets
         printf("\n");
 
-        // FILE *fp = fopen("ips.txt", "a");
-
-        // fprintf(fp, "Source IP: %s\nDestination IP: %s\nSource Port: %d\nDestination Port: %d\n", source_ip, destination_ip, source_port, destination_port);
-
-        // Close the file
-        // fclose(fp);
     }///closing of while
 
     return 0;

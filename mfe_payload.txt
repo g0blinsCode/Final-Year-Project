@@ -1,0 +1,9 @@
+.exe
+.bat
+.cmd
+.php
+.js
+.vbs
+.py
+.cpp
+.perl

@@ -10,7 +10,7 @@ bool check_sql_payload(string data_payload, string payload) {
     return false;
 }
 
-void SQL_Detector(char *data_payload){
+void SQL_Detector(char *data_payload , char *source_ip , char* destination_ip){
 
     string file_name = "sql_payload.txt";
     ifstream infile(file_name);
@@ -24,6 +24,9 @@ void SQL_Detector(char *data_payload){
         if (check_sql_payload(data_payload, payload)) {
             cout<<"\n SQL Payload Detected ....";
             cout << "\nPayload >> " << payload << " << found in data payload." << endl;
+            string str = " SQL Payload Detected .... Payload is >> " + payload + " << found in data payload Source IP attacking is  >> " + source_ip + " << and Destination IP is >> " + destination_ip + " << ";
+            Output1(str);
+            // exit(0);
             // exit(0);
         }
     }

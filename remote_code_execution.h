@@ -10,7 +10,7 @@ bool check_rce_payload(string data_payload, string payload) {
     return false;
 }
 
-void RCE_Detector(char *data_payload){
+void RCE_Detector(char *data_payload, char *source_ip , char* destination_ip){
 
     string file_name = "rce_payload.txt";
     ifstream infile(file_name);
@@ -24,6 +24,9 @@ void RCE_Detector(char *data_payload){
         if (check_rce_payload(data_payload, payload)) {
             cout<<"\n RCE Payload Detected ....";
             cout << "\nPayload >> " << payload << " << found in data payload." << endl;
+            string str = " RCE Payload Detected .... Payload is >> " + payload + " << found in data payload Source IP attacking is  >> " + source_ip + " << and Destination IP is >> " + destination_ip + " << ";
+            Output1(str);
+            // exit(0);
             // exit(0);
         }
     }
